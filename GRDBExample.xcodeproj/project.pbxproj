@@ -11,6 +11,10 @@
 		4919413628736C640034254A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4919413528736C640034254A /* ContentView.swift */; };
 		4919413828736C660034254A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4919413728736C660034254A /* Assets.xcassets */; };
 		4919413B28736C660034254A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4919413A28736C660034254A /* Preview Assets.xcassets */; };
+		4919414828736CDC0034254A /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 4919414728736CDC0034254A /* GRDB */; };
+		4919414B28736CF90034254A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4919414A28736CF90034254A /* DatabaseManager.swift */; };
+		4919414D2873A0610034254A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4919414C2873A0610034254A /* Player.swift */; };
+		4919414F2873A0820034254A /* PlayerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4919414E2873A0820034254A /* PlayerRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		4919413528736C640034254A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4919413728736C660034254A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4919413A28736C660034254A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4919414A28736CF90034254A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		4919414C2873A0610034254A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4919414E2873A0820034254A /* PlayerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4919414828736CDC0034254A /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +59,7 @@
 		4919413228736C640034254A /* GRDBExample */ = {
 			isa = PBXGroup;
 			children = (
+				4919414928736CE80034254A /* DataLayer */,
 				4919413328736C640034254A /* GRDBExampleApp.swift */,
 				4919413528736C640034254A /* ContentView.swift */,
 				4919413728736C660034254A /* Assets.xcassets */,
@@ -65,6 +74,16 @@
 				4919413A28736C660034254A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4919414928736CE80034254A /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4919414A28736CF90034254A /* DatabaseManager.swift */,
+				4919414C2873A0610034254A /* Player.swift */,
+				4919414E2873A0820034254A /* PlayerRepository.swift */,
+			);
+			path = DataLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +102,9 @@
 			dependencies = (
 			);
 			name = GRDBExample;
+			packageProductDependencies = (
+				4919414728736CDC0034254A /* GRDB */,
+			);
 			productName = GRDBExample;
 			productReference = 4919413028736C640034254A /* GRDBExample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +133,9 @@
 				Base,
 			);
 			mainGroup = 4919412728736C640034254A;
+			packageReferences = (
+				4919414628736CDC0034254A /* XCRemoteSwiftPackageReference "GRDB" */,
+			);
 			productRefGroup = 4919413128736C640034254A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4919414D2873A0610034254A /* Player.swift in Sources */,
+				4919414B28736CF90034254A /* DatabaseManager.swift in Sources */,
 				4919413628736C640034254A /* ContentView.swift in Sources */,
 				4919413428736C640034254A /* GRDBExampleApp.swift in Sources */,
+				4919414F2873A0820034254A /* PlayerRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +367,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4919414628736CDC0034254A /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4919414728736CDC0034254A /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4919414628736CDC0034254A /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4919412828736C640034254A /* Project object */;
 }
