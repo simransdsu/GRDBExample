@@ -30,6 +30,11 @@ struct ContentView: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
+                        .onTapGesture {
+                            Task {
+                                await vm.updatePlayer(player)
+                            }
+                        }
                     }
                     .onDelete { indexSet in
                         Task {
@@ -69,13 +74,22 @@ class ViewModel: ObservableObject {
     }
     
     @MainActor func fetchPlayer() async {
-        players = await repository.fetchAll() ?? []
+        players = await repository.fetchAll()?.sorted(by: {
+            $0.name < $1.name
+        }) ?? []
     }
     
     @MainActor func deletePlayer(at indexSet: IndexSet) async {
         
         let playerToDelete = players[indexSet.first ?? 0]
         await repository.delete(playerToDelete)
+        await fetchPlayer()
+    }
+    
+    @MainActor func updatePlayer(_ player: Player) async {
+        
+        let newPlayer = Player(id: "", name: "\(player.name) Updated", score: player.score + 1)
+        await repository.update(player: player, with: newPlayer)
         await fetchPlayer()
     }
 }

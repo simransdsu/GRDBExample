@@ -13,7 +13,6 @@ struct DatabaseManager {
     public static let shared = DatabaseManager()
     
     public var dbQueue: DatabaseQueue?
-    public var db: Database?
     
     private init() {
         
@@ -23,8 +22,6 @@ struct DatabaseManager {
         dbQueue = try? DatabaseQueue(path: databaseURL?.path ?? "")
         
         try? dbQueue?.write { db in
-            
-            self.db = db
             
             try? db.create(table: "player") { t in
                 t.column("id").primaryKey()
